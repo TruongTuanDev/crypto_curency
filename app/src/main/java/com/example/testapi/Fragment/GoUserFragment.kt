@@ -1,0 +1,106 @@
+package com.example.testapi.Fragment
+
+import SessionManager
+import android.content.Intent
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import com.example.testapi.MainActivity
+import com.example.testapi.R
+import com.example.testapi.auth.SignIn
+import com.example.testapi.databinding.FragmentGoUserBinding
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
+
+/**
+ * A simple [Fragment] subclass.
+ * Use the [GoUserFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+class GoUserFragment : Fragment() {
+    private lateinit var btnGoUser : Button
+    private lateinit var btnLogout : Button
+    private lateinit var database : DatabaseReference
+    private lateinit var binding : FragmentGoUserBinding
+    private lateinit var sessionManager: SessionManager
+
+
+    // TODO: Rename and change types of parameters
+    private var param1: String? = null
+    private var param2: String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sessionManager = SessionManager(requireContext())
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
+        }
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+       binding = FragmentGoUserBinding.inflate(inflater,container,false)
+        binding.btnLogout.setOnClickListener{
+            logOut()
+        }
+        binding.btnSignInnot.setOnClickListener{
+            goUser()
+        }
+        return binding.root
+    }
+    private fun logOut(){
+        val phone = sessionManager.getPhoneInstall()
+        database = FirebaseDatabase.getInstance().getReference("Accounts")
+        if (phone != null) {
+            database.child(phone).child("isOnline").setValue(false)
+        }
+        sessionManager.setFirstInstall(false)
+        sessionManager.setPhoneInstall("")
+        sessionManager.setRuleUserInstall(false)
+        sessionManager.setRuleAdminInstall(false)
+
+        val intent = Intent(requireActivity(), SignIn::class.java)
+        startActivity(intent)
+        activity?.finish()
+    }
+    private fun goUser(){
+        sessionManager.setFirstInstall(true)
+        sessionManager.setPhoneInstall("")
+        sessionManager.setRuleUserInstall(false)
+        sessionManager.setRuleAdminInstall(true)
+        val intent = Intent(requireActivity(), MainActivity::class.java)
+        startActivity(intent)
+        activity?.finish()
+    }
+
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment GoUserFragment.
+         */
+        // TODO: Rename and change types and number of parameters
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            GoUserFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
+            }
+    }
+}

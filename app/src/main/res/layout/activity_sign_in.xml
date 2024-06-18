@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blackBackground"
+    tools:context=".auth.SignIn">
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="356dp"
+        android:layout_height="509dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:layout_width="109dp"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/svn_gilroy_bold"
+            android:gravity="left"
+            android:text="Đăng nhập"
+            android:textColor="@color/white"
+            android:textSize="32dp"
+            android:textStyle="normal">
+
+        </TextView>
+
+        <TableRow
+            android:layout_width="327dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/svn_gilroy_medium"
+                android:gravity="left"
+                android:text="Bạn chưa có tài khoản?"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textSignUp"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/svn_gilroy_medium"
+                android:gravity="left"
+                android:text="Đăng ký ngay"
+                android:textColor="@color/colorBlueLogin"
+                android:textSize="14dp"
+                android:textStyle="bold">
+
+            </TextView>
+        </TableRow>
+
+        <TableLayout android:layout_marginLeft="6dp"
+
+            >
+
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="37dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/ic_person" />
+
+                <EditText
+                    android:id="@+id/edtPhoneSignIn"
+                    android:layout_width="192dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGrey"
+                    android:ems="10"
+                    android:fontFamily="@font/svn_gilroy_medium"
+                    android:hint="Số điện thoại hoặc email"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/colorGrey"
+                    android:textSize="16dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="304dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="49dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/ic_lock" />
+
+                <EditText
+                    android:id="@+id/edtPasswordSignIn"
+                    android:layout_width="278dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGrey"
+                    android:ems="10"
+                    android:fontFamily="@font/svn_gilroy_medium"
+                    android:hint="Mật khẩu"
+                    android:inputType="textPassword"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/colorGrey"
+                    android:textSize="16dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+
+            android:layout_marginLeft="20dp">
+
+            <TextView
+                android:id="@+id/textForgotPass"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/svn_gilroy_medium"
+                android:gravity="left"
+                android:text="Quên mật khẩu?"
+                android:textColor="@color/colorBlueLogin"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+        </TableLayout>
+
+
+        <Button
+            android:id="@+id/btnSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/border_radius"
+            android:backgroundTint="@color/colorBlueLogin"
+            android:fontFamily="@font/svn_gilroy_medium"
+            android:text="Đăng nhập"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+
+        <TableLayout>
+
+            <TableRow
+                android:layout_height="58dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imgvGoogle"
+                    android:layout_width="49dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/google_new_g_icon" />
+
+                <ImageView
+                    android:id="@+id/imgvFacebook"
+                    android:layout_width="54dp"
+                    android:layout_height="69dp"
+                    android:layout_marginLeft="20dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/facebook_icon" />
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout android:layout_marginTop="10dp">
+
+            <TableRow
+                android:layout_height="58dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imageView10"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:scaleType="center"
+                    app:srcCompat="@drawable/ic_fingerprint" />
+            </TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:fontFamily="@font/svn_gilroy_medium"
+                android:gravity="center"
+                android:text="TouchID"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </TableLayout>
+
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="177dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="177dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/svn_gilroy_medium"
+        android:gravity="center"
+        android:text="Secured by VKU"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

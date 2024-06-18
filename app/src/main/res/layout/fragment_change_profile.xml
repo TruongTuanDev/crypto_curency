@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_change_profile"
+    android:background="#1b222f"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgBackProChange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                app:srcCompat="@drawable/ic_back" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="60dp"
+                android:baselineAligned="false"
+                android:fontFamily="@font/svn_gilroy_bold"
+                android:gravity="center"
+                android:text="Change Profile"
+                android:textColor="@color/white"
+                android:textSize="25dp" />
+        </TableRow>
+
+        <TableLayout
+            android:id="@+id/layoutTbChangePro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableRow5"
+            tools:ignore="MissingConstraints">
+
+            <TableRow android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/labelFullNameProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/svn_gilroy_bold"
+                    android:text="Full Name"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/labelChangeProfile" />
+
+                <EditText
+                    android:id="@+id/editFullNameProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:backgroundTint="@color/colorGrey"
+                    android:fontFamily="@font/svn_gilroy_medium"
+                    android:text="Trương Văn Tuấn"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    app:layout_constraintHorizontal_bias="0.444"
+                    app:layout_constraintStart_toStartOf="@+id/labelEmailProfile"
+                    app:layout_constraintTop_toBottomOf="@+id/labelChangeProfile" />
+
+            </TableRow>
+
+            <TableRow android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/labelEmailProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/svn_gilroy_bold"
+                    android:text="Email"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/labelFullNameProfile" />
+
+                <EditText
+                    android:id="@+id/editEmailProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:backgroundTint="@color/colorGrey"
+                    android:fontFamily="@font/svn_gilroy_medium"
+                    android:inputType="textEmailAddress"
+                    android:text="tuan@gmai.com"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    app:layout_constraintHorizontal_bias="0.444"
+                    app:layout_constraintStart_toStartOf="@+id/labelEmailProfile"
+                    app:layout_constraintTop_toBottomOf="@+id/editFullNameProfile" />
+
+            </TableRow>
+
+            <TableRow android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/labelBirthDayProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/svn_gilroy_bold"
+                    android:text="BirthDay"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/labelEmailProfile" />
+
+                <EditText
+                    android:id="@+id/editBirthDayProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:backgroundTint="@color/colorGrey"
+                    android:fontFamily="@font/svn_gilroy_medium"
+                    android:inputType="date"
+                    android:text="30/07/2004"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    app:layout_constraintHorizontal_bias="0.084"
+                    app:layout_constraintStart_toStartOf="@+id/labelBirthDayProfile"
+                    app:layout_constraintTop_toBottomOf="@+id/editEmailProfile" />
+
+            </TableRow>
+
+            <TableRow android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/labelGenderProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/svn_gilroy_bold"
+                    android:text="Gender"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/labelBirthDayProfile" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="133dp"
+                    android:layout_height="97dp"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/svn_gilroy_medium"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="@+id/labelGenderProfile"
+                    app:layout_constraintTop_toBottomOf="@+id/editBirthDayProfile">
+
+                    <RadioButton
+                        android:id="@+id/radioMaleProChange"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Male"
+                        android:textColor="@color/white" />
+
+                    <RadioButton
+                        android:id="@+id/radioFemaleProChange"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Female"
+                        android:textColor="@color/white" />
+
+                    <RadioButton
+                        android:id="@+id/radioDifferenceProChange"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Difference"
+                        android:textColor="@color/white" />
+                </RadioGroup>
+
+            </TableRow>
+
+            <TableRow android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/labelCountryProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/svn_gilroy_bold"
+                    android:layout_marginTop="8dp"
+                    android:text="Country"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/labelGenderProfile" />
+
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/ccpCountryProfileChange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/svn_gilroy_medium"
+                    android:text="Việt Nam"
+                    app:ccp_contentColor="@color/white"
+                    app:ccp_defaultLanguage="ENGLISH"
+                    app:ccp_defaultNameCode="VN"
+                    app:ccp_showFullName="true"
+                    app:ccp_showPhoneCode="false"
+                    app:ccp_textSize="20dp"
+                    app:layout_constraintHorizontal_bias="0.084"
+                    app:layout_constraintStart_toStartOf="@+id/labelBirthDayProfile"
+                    app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+            </TableRow>
+
+            <TableLayout android:layout_height="231dp">
+                <TableRow
+                    android:id="@+id/tableRow41"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="56dp"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tableRow2">
+
+                    <Button
+                        android:id="@+id/btnSaveProChange"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_radius"
+                        android:fontFamily="@font/svn_gilroy_bold"
+                        android:paddingLeft="50dp"
+                        android:paddingRight="50dp"
+                        android:text="Change"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+
+                </TableRow>
+            </TableLayout>
+        </TableLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

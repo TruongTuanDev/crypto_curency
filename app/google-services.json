@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "861601277588",
+    "firebase_url": "https://cryptocurrency-trading-efee6-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "cryptocurrency-trading-efee6",
+    "storage_bucket": "cryptocurrency-trading-efee6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861601277588:android:50bcd84dd0d5bf5dd1f681",
+        "android_client_info": {
+          "package_name": "com.example.testapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861601277588-bjmuej1gd708ne375pvrab0erjrpcjvi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.testapi",
+            "certificate_hash": "aadb7769ddf4c7e912027e4509a31e7ec71c306b"
+          }
+        },
+        {
+          "client_id": "861601277588-33a7fhjko24r56g714b3rep6tadfk59v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCf_7XGZz-whk8FIbYu3a70rPXSp0oXl_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861601277588-33a7fhjko24r56g714b3rep6tadfk59v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861601277588:android:d107ec50a8321035d1f681",
+        "android_client_info": {
+          "package_name": "com.ok.oo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861601277588-33a7fhjko24r56g714b3rep6tadfk59v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCf_7XGZz-whk8FIbYu3a70rPXSp0oXl_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861601277588-33a7fhjko24r56g714b3rep6tadfk59v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blackBackground"
+    android:id="@+id/main"
+    tools:context=".auth.SignUp">
+
+    <TableLayout
+        android:id="@+id/tableLayout2"
+        android:layout_width="350dp"
+        android:layout_height="623dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.091">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgBackVerifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/ic_back" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="135dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="7dp"
+                android:baselineAligned="false"
+                android:fontFamily="@font/svn_gilroy_bold"
+                android:gravity="center"
+                android:text="@string/SignUp"
+                android:textColor="@color/white"
+                android:textSize="32dp" />
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp">
+
+            <ImageView
+                android:id="@+id/imageView22"
+                android:layout_width="37dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/ic_person" />
+
+            <EditText
+                android:id="@+id/edtUsernameSignup"
+                android:layout_width="259dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="@color/colorGrey"
+                android:ems="10"
+                android:fontFamily="@font/svn_gilroy_medium"
+                android:hint="Tên đầy đủ"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textColorHint="@color/colorGrey"
+                android:textSize="14dp"
+                tools:ignore="TouchTargetSizeCheck" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp">
+
+            <ImageView
+                android:id="@+id/imageView21"
+                android:layout_width="37dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/ic_phone" />
+
+            <EditText
+                android:id="@+id/edtPhoneSignup"
+                android:layout_width="259dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="@color/colorGrey"
+                android:ems="10"
+                android:fontFamily="@font/svn_gilroy_medium"
+                android:hint="Số điện thoại"
+                android:inputType="phone"
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/colorGrey"
+                android:textSize="14dp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp">
+
+            <ImageView
+                android:id="@+id/imageView23"
+                android:layout_width="37dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/ic_email" />
+
+            <EditText
+                android:id="@+id/edtEmailSignup"
+                android:layout_width="259dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="@color/colorGrey"
+                android:ems="10"
+                android:fontFamily="@font/svn_gilroy_medium"
+                android:hint="@string/Email"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/white"
+                android:textColorHint="@color/colorGrey"
+                android:textSize="14dp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp">
+
+            <ImageView
+                android:id="@+id/imageView24"
+                android:layout_width="37dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/ic_date" />
+
+            <EditText
+                android:id="@+id/edtBirthSignup"
+                android:layout_width="259dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="@color/colorGrey"
+                android:ems="10"
+                android:fontFamily="@font/svn_gilroy_medium"
+                android:hint="Ngày sinh"
+                android:inputType="date"
+                android:textColor="@color/white"
+                android:textColorHint="@color/colorGrey"
+                android:textSize="14dp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp">
+
+            <ImageView
+                android:id="@+id/imageView25"
+                android:layout_width="37dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/ic_lock" />
+
+            <EditText
+                android:id="@+id/edtPassSignup"
+                android:layout_width="259dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="@color/colorGrey"
+                android:ems="10"
+                android:fontFamily="@font/svn_gilroy_medium"
+                android:hint="@string/Password"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textColorHint="@color/colorGrey"
+                android:textSize="14dp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp">
+
+            <ImageView
+                android:id="@+id/imageView26"
+                android:layout_width="37dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/ic_lock" />
+
+            <EditText
+                android:id="@+id/edtConfPassSignup"
+                android:layout_width="296dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="@color/colorGrey"
+                android:ems="10"
+                android:fontFamily="@font/svn_gilroy_medium"
+                android:hint="Nhập lại mật khẩu"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textColorHint="@color/colorGrey"
+                android:textSize="14dp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </TableRow>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkedButton="@id/radio_Male"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_Male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:buttonTint="@color/white"
+                android:fontFamily="@font/svn_gilroy_medium"
+                android:minHeight="48dp"
+                android:text="Nam"
+                android:textColor="@color/white" />
+
+            <RadioButton
+                android:id="@+id/radio_Female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:buttonTint="@color/white"
+                android:fontFamily="@font/svn_gilroy_medium"
+                android:minHeight="48dp"
+                android:text="Nữ"
+                android:textColor="@color/white" />
+
+        </RadioGroup>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:id="@+id/imageView27"
+                android:layout_width="37dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/ic_location" />
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/ccpCountrySignup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                app:ccp_contentColor="@color/white"
+                app:ccp_defaultLanguage="ENGLISH"
+                app:ccp_defaultNameCode="VN"
+                app:ccp_showFullName="true"
+                app:ccp_showPhoneCode="false"
+                app:ccp_textSize="16dp" />
+        </TableRow>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnSignup"
+                android:layout_width="345dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/border_radius"
+                android:backgroundTint="@color/colorBlueLogin"
+                android:fontFamily="@font/svn_gilroy_medium"
+                android:text="Đăng ký"
+                android:textColor="@color/white"
+                android:textSize="20dp">
+
+            </Button>
+
+            <ProgressBar
+                android:id="@+id/progessBar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:visibility="gone">
+
+            </ProgressBar>
+
+        </FrameLayout>
+    <TableLayout
+        android:layout_marginTop="50dp"
+        >
+        <TableRow
+            android:layout_width="327dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/svn_gilroy_medium"
+                android:gravity="left"
+                android:text="Bạn đã có tài khoản?"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewSignIn"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/svn_gilroy_medium"
+                android:gravity="left"
+                android:text="Đăng nhập ngay"
+                android:textColor="@color/colorBlueLogin"
+                android:textSize="14dp"
+                android:textStyle="bold">
+
+            </TextView>
+        </TableRow>
+    </TableLayout>
+
+    </TableLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
