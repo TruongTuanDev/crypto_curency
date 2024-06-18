@@ -2,6 +2,7 @@ package com.example.testapi.model
 
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.GenericTypeIndicator
+import java.io.Serializable
 
 data class Account(
     var userID: String? = null,
@@ -16,7 +17,7 @@ data class Account(
     var rule: String? = null,
     var notify: Int? = null,
     var isOnline: Boolean? = null
-) {
+) : Serializable {
     constructor(snapshot: DataSnapshot) : this(
         userID = snapshot.key ?: "",
         name = snapshot.child("name").getValue(String::class.java),

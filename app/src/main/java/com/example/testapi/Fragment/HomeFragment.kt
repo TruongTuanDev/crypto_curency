@@ -72,7 +72,6 @@ class HomeFragment : Fragment() {
                     }
                         binding.textCountNotify.text = countNotify.toString()
                 }
-
             }
 
             override fun onCancelled(p0: DatabaseError) {
@@ -80,12 +79,15 @@ class HomeFragment : Fragment() {
 
         })
 
-        binding.btnNotification.setOnClickListener{
+        binding.btnNotification.setOnClickListener {
             val fragment = NotificationUserFragment()
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.body_container ,  fragment)?.commit()
+            val bundle = Bundle()
+            bundle.putString("phone", phone)
+            fragment.arguments = bundle
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.body_container, fragment)?.commit()
             countNotify?.setValue(0)
         }
-
         topCoinAdapter = TopCoinAdapter(topCoinList, object : ItemClickListener{
             override fun onClick(dataItem: DataItem) {
                 onClickToDetail(dataItem)

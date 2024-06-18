@@ -57,6 +57,7 @@ class SignIn : AppCompatActivity() {
         }else{
             Log.e("Chưa nha", "ok mày")
             if (sessionManager.getRuleUserInstall()){
+                Log.e("Mày vào rồi ra làm gì", "ok mày")
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -65,6 +66,8 @@ class SignIn : AppCompatActivity() {
                 val intent = Intent(this, MainAdminActivity::class.java)
                 startActivity(intent)
                 finish()
+            }else{
+                Log.e("Thì ra l ko có rule", "ok mày")
             }
         }
         binding.imgvGoogle.setOnClickListener {

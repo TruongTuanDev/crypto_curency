@@ -2,6 +2,7 @@ package com.example.testapi.Fragment
 
 import SessionManager
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.Dialog
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -15,6 +16,7 @@ import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.testapi.Adapter.NotifyAdapter
 import com.example.testapi.R
 import com.example.testapi.databinding.FragmentNotificationBinding
+import com.example.testapi.model.Account
 import com.example.testapi.model.Notification
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -54,7 +57,7 @@ class NotificationFragment : Fragment() {
     private lateinit var notificationList  : ArrayList<Notification>
     private lateinit var notificationAdapter : NotifyAdapter
     private lateinit var sessionManager: SessionManager
-
+    private lateinit var accountList : ArrayList<Account>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sessionManager = SessionManager(requireContext())
@@ -69,7 +72,7 @@ class NotificationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentNotificationBinding.inflate(inflater,container,false)
-
+        accountList = ArrayList()
         notificationList = ArrayList()
         notificationAdapter = NotifyAdapter(notificationList)
         imgCreateNotifi = binding.imgCreateNotifcation
@@ -78,6 +81,7 @@ class NotificationFragment : Fragment() {
             openProfileDialog(Gravity.CENTER)
         }
         getListFeedBacksRealtimeDB()
+        getListPhoneBooksRealtimeDB()
         setupRecyclerView(recyclerViewNotification,notificationAdapter)
         return binding.root
     }
@@ -124,30 +128,64 @@ class NotificationFragment : Fragment() {
         }else{
             dialog.setCancelable(false)
         }
+        var selectedNameTitle = ""
+        var selectedPhone =""
         val edtTitleNoti : EditText = dialog.findViewById(R.id.edtTitleNotifi)
         val edtDetailNoti : EditText = dialog.findViewById(R.id.edtDescNotifi)
+        val edtUserNoti : TextView = dialog.findViewById(R.id.edtUserNotifi)
         val btnSendNoti : Button = dialog.findViewById(R.id.btnSendDialogNotifi)
+        edtUserNoti.setOnClickListener{
+            val phoneArray = arrayOfNulls<String>(accountList.size)
+            for (i in accountList.indices){
+                phoneArray[i] = accountList[i].phone
 
+            }
+            //alert dialog
+            val builder = AlertDialog.Builder(dialog.context)
+            builder.setTitle("Chọn User cần gửi")
+            builder.setItems(phoneArray) { dialog, which ->
+                // Xử lý khi người dùng chọn một mục từ danh sách
+                selectedNameTitle = accountList[which].name.toString()
+                selectedPhone = accountList[which].phone!!
+                edtUserNoti.setText("$selectedPhone-$selectedNameTitle")
+            }
+            val alertDialog = builder.create()
+            alertDialog.show()
+        }
         btnSendNoti.setOnClickListener {
             val title = edtTitleNoti.text.toString()
             val description = edtDetailNoti.text.toString()
             if (title.isNotEmpty() || description.isNotEmpty()) {
                 val keyIdOld: Int = sessionManager.getKeyIDNotify()
-                val keyId = keyIdOld + 1
-                database = FirebaseDatabase.getInstance().getReference("Notification")
-                val databaseAccounts : DatabaseReference  = FirebaseDatabase.getInstance().getReference("Accounts")
-                databaseAccounts.addListenerForSingleValueEvent(object : ValueEventListener{
-                    override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        for (accountSnap in dataSnapshot.children){
-                                val userId: String? = accountSnap.getKey()
-                                incrementCountNotify(userId)
+                val adminSelectPhone = edtUserNoti.text.toString()
+                val index = adminSelectPhone.indexOf("-")
+
+// Cắt chuỗi thành hai phần
+                val phone = adminSelectPhone.substring(0, index)  // Phần trước dấu "-"
+                val name = adminSelectPhone.substring(index + 1)
+                val keyId = phone.toIntOrNull()
+//                val timestamp=
+                database = FirebaseDatabase.getInstance().getReference("Notification").child(phone!!)
+                val accountRef = FirebaseDatabase.getInstance().getReference("Accounts").child(phone!!).child("countNotify")
+                accountRef.runTransaction(object : Handler {
+                    override fun doTransaction(mutableData: MutableData): Transaction.Result {
+                        val currentCount = mutableData.getValue(Long::class.java)
+                        if (currentCount == null) {
+                            mutableData.value = 1
+                        } else {
+                            mutableData.value = currentCount + 1
+                        }
+                        return Transaction.success(mutableData)
+                    }
+
+                    override fun onComplete(
+                        databaseError: DatabaseError?,
+                        committed: Boolean,
+                        dataSnapshot: DataSnapshot?
+                    ) {
+                        if (databaseError != null) {
                         }
                     }
-
-                    override fun onCancelled(p0: DatabaseError) {
-
-                    }
-
                 })
                 val idNofi : String = database.push().key!!
                 val notification = Notification(
@@ -155,8 +193,9 @@ class NotificationFragment : Fragment() {
                     title = title,
                     description = description)
                 // Đưa lên firebase
-                database.child("" + keyId).setValue(notification)
-                sessionManager.setKeyIDNotify(keyId)
+                val time=System.currentTimeMillis()
+                database.child("" + time).setValue(notification)
+                sessionManager.setKeyIDNotify(time.toInt())
                 dialog.dismiss()
             } else {
                 Toast.makeText(activity, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show()
@@ -165,29 +204,29 @@ class NotificationFragment : Fragment() {
 
         dialog.show()
     }
-    fun incrementCountNotify(phone: String?) {
-        val accountRef = FirebaseDatabase.getInstance().getReference("Accounts").child(phone!!).child("countNotify")
-        accountRef.runTransaction(object : Handler {
-            override fun doTransaction(mutableData: MutableData): Transaction.Result {
-                val currentCount = mutableData.getValue(Long::class.java)
-                if (currentCount == null) {
-                    mutableData.value = 1
-                } else {
-                    mutableData.value = currentCount + 1
-                }
-                return Transaction.success(mutableData)
-            }
-
-            override fun onComplete(
-                databaseError: DatabaseError?,
-                committed: Boolean,
-                dataSnapshot: DataSnapshot?
-            ) {
-                if (databaseError != null) {
-                }
-            }
-        })
-    }
+//    fun incrementCountNotify(phone: String?) {
+//        val accountRef = FirebaseDatabase.getInstance().getReference("Accounts").child(phone!!).child("countNotify")
+//        accountRef.runTransaction(object : Handler {
+//            override fun doTransaction(mutableData: MutableData): Transaction.Result {
+//                val currentCount = mutableData.getValue(Long::class.java)
+//                if (currentCount == null) {
+//                    mutableData.value = 1
+//                } else {
+//                    mutableData.value = currentCount + 1
+//                }
+//                return Transaction.success(mutableData)
+//            }
+//
+//            override fun onComplete(
+//                databaseError: DatabaseError?,
+//                committed: Boolean,
+//                dataSnapshot: DataSnapshot?
+//            ) {
+//                if (databaseError != null) {
+//                }
+//            }
+//        })
+//    }
     private fun getListFeedBacksRealtimeDB() {
         database = FirebaseDatabase.getInstance().getReference("Notification")
         database.addValueEventListener(object : ValueEventListener {
@@ -195,11 +234,39 @@ class NotificationFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 notificationList.clear()
                 for (dataSnapshot in snapshot.children) {
-                    val notification = dataSnapshot.getValue(Notification::class.java)
-                    Log.e("Thông bao", notification.toString())
-                    notification?.let { notificationList .add(it) }!!
+                    for (itemSnapshot in dataSnapshot.children) {
+                        val id: String? = itemSnapshot.child("id").getValue(String::class.java)
+                        val description: String? = itemSnapshot.child("description").getValue(String::class.java)
+                        val title: String? = itemSnapshot.child("title").getValue(String::class.java)
+                        val notification = Notification(id, description, title)
+                        Log.e("Thông bao", notification.toString())
+                        notification?.let { notificationList.add(it) }!!
+                    }
                 }
                 notificationAdapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
+    }
+    private fun getListPhoneBooksRealtimeDB() {
+        database = FirebaseDatabase.getInstance().getReference("Accounts")
+        database.addValueEventListener(object : ValueEventListener {
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onDataChange(snapshot: DataSnapshot) {
+                accountList.clear()
+                for (dataSnapshot in snapshot.children) {
+                    val account = dataSnapshot.getValue(Account::class.java)
+                    val getRule = snapshot.child(dataSnapshot.key!!).child("rule").getValue(
+                        String::class.java
+                    )
+                    if (getRule == "user") {
+                        accountList.add(account!!)
+                    }
+                }
+
             }
 
             override fun onCancelled(error: DatabaseError) {

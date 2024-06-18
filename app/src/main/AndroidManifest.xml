@@ -17,18 +17,18 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
-        <activity
-            android:name=".screens.MainAdminActivity"
-            android:exported="false" />
+
         <activity
             android:name=".screens.NotificationActivity"
             android:exported="false" />
         <activity
             android:name=".Admin"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
-            android:name=".auth.SignIn"
-            android:exported="true">
+            android:name=".screens.MainAdminActivity"
+            android:exported="true"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

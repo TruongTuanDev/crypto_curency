@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity(), ITransmitData {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.e("Main","vào rồi đó")
         binding = ActivityMainBinding.inflate(layoutInflater)
         sessionManager = SessionManager(this)
         setContentView(binding.root)

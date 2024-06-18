@@ -88,7 +88,6 @@ class SignUp : AppCompatActivity() {
         val notify : Int = 0
         val country: String =  binding.ccpCountrySignup.selectedCountryCode
         val sex: String = sex()
-
         if (name.isEmpty()){
             binding.edtUsernameSignup.error = "Vui lòng nhập đầy đủ họ tên"
             return
@@ -127,6 +126,7 @@ class SignUp : AppCompatActivity() {
                     if (task.isSuccessful) {
                         Toast.makeText(this@SignUp, "Đăng ký thành công", Toast.LENGTH_SHORT).show()
                         sessionManager.setFirstInstall(true)
+                        sessionManager.setRuleUserInstall(true)
                         val intent = Intent(this, SignIn::class.java)
                         startActivity(intent)
                         finish()

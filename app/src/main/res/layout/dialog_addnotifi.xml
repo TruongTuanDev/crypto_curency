@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:id="@+id/fragment_profile"
     android:background="@drawable/bg_write_cornet_16"
-    tools:context=".activity_profile_user"
     android:layout_margin="16dp">
 
     <TextView
@@ -28,7 +27,7 @@
 
     <TableLayout
         android:layout_width="379dp"
-        android:layout_height="223dp"
+        android:layout_height="300dp"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,15 +52,15 @@
                 <EditText
                     android:id="@+id/edtTitleNotifi"
                     android:layout_width="320dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/svn_gilroy_medium"
-                    android:hint="Title"
-                    android:inputType="textPersonName"
+                    android:hint="Tiêu đề"
+                    android:inputType="textMultiLine"
                     android:textColor="@color/black"
                     android:textColorHint="@color/colorGrey"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     tools:ignore="TouchTargetSizeCheck" />
             </TableRow>
 
@@ -75,6 +74,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
                     android:fontFamily="@font/svn_gilroy_medium"
+                    android:layout_marginBottom="10dp"
                     android:hint="Description"
                     android:inputType="textPersonName"
                     android:textColor="@color/black"
@@ -84,7 +84,26 @@
 
 
             </TableLayout>
+            <TableLayout
+                android:layout_height="59dp"
+                android:layout_marginTop="10dp">
 
+                <TextView
+                    android:id="@+id/edtUserNotifi"
+                    android:layout_width="306dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGrey"
+                    android:fontFamily="@font/svn_gilroy_medium"
+                    android:hint="Chọn Người gửi"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/colorGrey"
+                    android:textSize="20dp"
+                    tools:ignore="TouchTargetSizeCheck"
+                    android:drawableEnd="@drawable/ic_down_gray"
+                    />
+
+
+            </TableLayout>
 
             <Button
                 android:id="@+id/btnSendDialogNotifi"

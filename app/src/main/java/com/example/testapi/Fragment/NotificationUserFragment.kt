@@ -44,12 +44,14 @@ class NotificationUserFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var phone: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+            phone  =it.getString("phone")
         }
     }
 
@@ -98,7 +100,7 @@ class NotificationUserFragment : Fragment() {
     }
 
     private fun loadData() {
-        database = FirebaseDatabase.getInstance().getReference("Notification")
+        database = FirebaseDatabase.getInstance().getReference("Notification/"+phone.toString())
         database.addValueEventListener(object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
