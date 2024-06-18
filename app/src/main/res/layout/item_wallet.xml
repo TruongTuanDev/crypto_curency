@@ -6,6 +6,7 @@
     android:orientation="horizontal"
     android:background="@drawable/coin_radius"
     android:layout_marginBottom="5dp"
+    android:id="@+id/idCoinWallet"
     android:padding="16dp">
 
     <!-- Ảnh đồng coin -->

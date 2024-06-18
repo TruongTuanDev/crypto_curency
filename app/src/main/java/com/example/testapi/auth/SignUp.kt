@@ -126,7 +126,11 @@ class SignUp : AppCompatActivity() {
                     if (task.isSuccessful) {
                         Toast.makeText(this@SignUp, "Đăng ký thành công", Toast.LENGTH_SHORT).show()
                         sessionManager.setFirstInstall(true)
+<<<<<<< HEAD
                         sessionManager.setRuleUserInstall(true)
+=======
+
+>>>>>>> 2cfc616002a14b4664dfbed48699a48d87e13483
                         val intent = Intent(this, SignIn::class.java)
                         startActivity(intent)
                         finish()

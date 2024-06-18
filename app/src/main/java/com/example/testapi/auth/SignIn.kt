@@ -51,7 +51,7 @@ class SignIn : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        if (sessionManager.getFirstInstall() == false){
+        if (!sessionManager.getFirstInstall()){
             Log.e("rồi nha", "ok mày")
             event()
         }else{
@@ -62,13 +62,16 @@ class SignIn : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }else if(sessionManager.getRuleAdminInstall()){
-
                 val intent = Intent(this, MainAdminActivity::class.java)
                 startActivity(intent)
                 finish()
             }else{
+<<<<<<< HEAD
                 Log.e("Thì ra l ko có rule", "ok mày")
             }
+=======
+             }
+>>>>>>> 2cfc616002a14b4664dfbed48699a48d87e13483
         }
         binding.imgvGoogle.setOnClickListener {
             signInWithGG()
@@ -82,11 +85,11 @@ class SignIn : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         val currentUser = firebaseAuth.currentUser
 
-        if (currentUser == null) {
-            val intent = Intent(this, SignUp::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        if (currentUser == null) {
+//            val intent = Intent(this, SignUp::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
 
     }
     @Deprecated("")

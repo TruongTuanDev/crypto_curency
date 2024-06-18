@@ -127,7 +127,6 @@ class ExchangeCoinFragment : Fragment() {
                     database.addListenerForSingleValueEvent(object : ValueEventListener{
                         override fun onDataChange(dataSnapshot: DataSnapshot) {
                             if (amountToBuy != null) {
-                            val account = dataSnapshot.getValue(Account::class.java)
                             val currentDate = LocalDate.now()
                             val walets =  HashMap<String, String>()
                             val price = dataItem.quote.usd.price

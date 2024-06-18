@@ -26,6 +26,7 @@ import com.example.testapi.R
 import com.example.testapi.databinding.FragmentMarketBinding
 import com.example.testapi.model.DataItem
 import com.example.testapi.model.Market
+import com.example.testapi.model.Wallet
 import com.example.testapi.my_interface.ItemClickListener
 import retrofit2.Call
 import retrofit2.Response
@@ -58,6 +59,10 @@ class MarketFragment : Fragment() {
         marketAdapter = MarketAdapter(requireContext(), lCoinMarkets, object : ItemClickListener {
             override fun onClick(dataItem: DataItem) {
                 onClickToDetail(dataItem)
+            }
+
+            override fun onClickToSell(wallet: Wallet) {
+
             }
         })
         setupRecyclerView(binding.rcvMarket, marketAdapter)

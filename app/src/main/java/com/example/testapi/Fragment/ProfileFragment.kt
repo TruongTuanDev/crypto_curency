@@ -84,7 +84,9 @@ class ProfileFragment : Fragment() {
         imgEditPass = binding.imgchangePassword
         imgLogOut = binding.imgLogOut
 
-        imgCreateFeedBack.setOnClickListener { openProfileDiglog(Gravity.CENTER) }
+        imgCreateFeedBack.setOnClickListener {
+            openProfileDiglog(Gravity.CENTER)
+        }
         loadData()
         loadListener()
         UpdateData()

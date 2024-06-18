@@ -1,5 +1,7 @@
 package com.example.testapi.model
 
+import java.io.Serializable
+
 data class Wallet(
     val id : String = "",
     val name: String = "",
@@ -8,5 +10,4 @@ data class Wallet(
     val quantity: Double? = null,
     val quantity_curency:  Double? = null,
     val buy_date: String = "",
-
-    )
+    ): Serializable
