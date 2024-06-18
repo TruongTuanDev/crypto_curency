@@ -21,6 +21,7 @@ import com.example.testapi.R
 import com.example.testapi.databinding.FragmentHomeBinding
 import com.example.testapi.model.DataItem
 import com.example.testapi.model.Market
+import com.example.testapi.model.Wallet
 import com.example.testapi.my_interface.ItemClickListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -90,10 +91,18 @@ class HomeFragment : Fragment() {
             override fun onClick(dataItem: DataItem) {
                 onClickToDetail(dataItem)
             }
+
+            override fun onClickToSell(wallet: Wallet) {
+
+            }
         })
         topGainerAdapter = TopGainerAdapter(topCoinList, object : ItemClickListener{
             override fun onClick(dataItem: DataItem) {
                 onClickToDetail(dataItem)
+            }
+
+            override fun onClickToSell(wallet: Wallet) {
+
             }
 
         })
@@ -102,10 +111,18 @@ class HomeFragment : Fragment() {
                 onClickToDetail(dataItem)
             }
 
+            override fun onClickToSell(wallet: Wallet) {
+
+            }
+
         })
         newCoinApdater = NewCoinApdater(topCoinList, object : ItemClickListener{
             override fun onClick(dataItem: DataItem) {
                 onClickToDetail(dataItem)
+            }
+
+            override fun onClickToSell(wallet: Wallet) {
+
             }
         })
 

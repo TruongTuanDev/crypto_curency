@@ -20,6 +20,7 @@ import com.example.testapi.databinding.FragmentWalletsBinding
 import com.example.testapi.model.Account
 import com.example.testapi.model.DataItem
 import com.example.testapi.model.Wallet
+import com.example.testapi.my_interface.ItemClickListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -83,7 +84,16 @@ class WalletsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        walletsAdapter = WalletAdapter(lCoinMarkets)
+        walletsAdapter = WalletAdapter(lCoinMarkets, object : ItemClickListener{
+            override fun onClick(dataItem: DataItem) {
+
+            }
+
+            override fun onClickToSell(wallet: Wallet) {
+                onClickToDetail(wallet)
+            }
+
+        })
         setupRecyclerView(binding.recyclerViewCrypto,walletsAdapter)
     }
     fun formatNumber(number: Double): String {
@@ -159,6 +169,17 @@ class WalletsFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
             this.adapter = adapter
         }
+    }
+    private fun onClickToDetail(wallet: Wallet) {
+        val bundle = Bundle()
+        bundle.putSerializable("object_coin", wallet)
+        val sellCoinFragment = SellCoinFragment().apply {
+            arguments = bundle
+        }
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.body_container, sellCoinFragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     companion object {

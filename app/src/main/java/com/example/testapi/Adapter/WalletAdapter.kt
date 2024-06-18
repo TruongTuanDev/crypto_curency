@@ -12,7 +12,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapi.R
 import com.example.testapi.databinding.ItemWalletBinding
+import com.example.testapi.model.DataItem
 import com.example.testapi.model.Wallet
+import com.example.testapi.my_interface.ItemClickListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,7 +23,7 @@ import java.io.IOException
 import java.io.InputStream
 import java.net.URL
 
-class WalletAdapter(private var coinList: List<Wallet>) : RecyclerView.Adapter<WalletAdapter.CoinViewHolder>() {
+class WalletAdapter(private var coinList: List<Wallet>,private val itemClickListener: ItemClickListener) : RecyclerView.Adapter<WalletAdapter.CoinViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinViewHolder {
         val view = ItemWalletBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return CoinViewHolder(view)
@@ -49,6 +51,9 @@ class WalletAdapter(private var coinList: List<Wallet>) : RecyclerView.Adapter<W
             binding.tvCoinQuantity.text = formattedPrice +"  "+ coin.symbol
             val loadImage = LoadImage(coinImage)
             loadImage.loadImage("https://s2.coinmarketcap.com/static/img/coins/64x64/${coin.id}.png")
+            binding.idCoinWallet.setOnClickListener{
+                itemClickListener.onClickToSell(coin)
+            }
         }
     }
     class LoadImage(private val imageView: ImageView) {

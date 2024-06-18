@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:id="@+id/fragment_profile"
     android:background="@drawable/bg_write_cornet_16"
-    tools:context=".activity_profile_user"
     android:layout_margin="16dp">
 
     <TextView
